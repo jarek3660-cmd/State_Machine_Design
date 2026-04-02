@@ -40,7 +40,7 @@ end Gray_Code_Display;
 architecture Behavioral of Gray_Code_Display is
 
 component Frequency_Divider is
-    Port ( Clock_Sys : in STD_LOGIC;
+    Port ( Clock_System : in STD_LOGIC;
            Clock_1Hz : out STD_LOGIC);
 end component;
 
@@ -53,7 +53,7 @@ end component;
 signal slow_Clock : STD_LOGIC;
 begin
 
-fd1: Frequency_Divider Port map (Clock_Sys => System_Clock_Loc,
+fd1: Frequency_Divider Port map (Clock_System => System_Clock_Loc,
                        Clock_1Hz => slow_Clock);
 counter_Inst: Gray_Code_Counter Port map(Clock_System => slow_Clock,
                                          Reset => Reset_Loc,
