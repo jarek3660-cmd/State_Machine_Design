@@ -41,27 +41,27 @@ end Robot_Eye_Counter;
 architecture Behavioral of Robot_Eye_Counter is
 
 signal presentState : STD_LOGIC_VECTOR (4 downto 0) := "00000";
-signal nextState : STD_LOGIC_vector (3 downto 0);
+signal nextState : STD_LOGIC_vector (4 downto 0);
 
 begin
 
     process (Clock_System, Reset)
     begin
         if Reset = '1' then
-        presentState <= "0001";
+        presentState <= "00001";
         elsif rising_edge(Clock_System) then
         presentState <= nextState;
         end if;
     end process;
 
 Cathode_7SD <= "00000011";
-Anode_7SD <= "111" & presentState;
-nextState <= "111111110" when presentState <= "00001" else
-"11111101" when presentState <= "00010" else
-"11111011" when presentState <= "00100" else
-"11110111" when presentState <= "01000" else
-"11111011" when presentState <= "10010" else
-"11111101" when presentState <= "10100" else
-"11111110";
+Anode_7SD <= "1111" & presentState(3 downto 0);
+nextState <= "11110" when presentState <= "00001" else
+"11101" when presentState <= "00010" else
+"11011" when presentState <= "00100" else
+"10111" when presentState <= "01000" else
+"11011" when presentState <= "10010" else
+"11101" when presentState <= "10100" else
+"11110";
 
 end Behavioral;
