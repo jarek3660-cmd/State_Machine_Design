@@ -8,7 +8,7 @@ signal nextState : STD_LOGIC_vector (3 downto 0);
 begin
 process (clock, reset)
 begin
-if reset = '1’ the
+if reset = '1’ then
 presentState <= “0001”;
 elsif rising_edge(clock) then
 presentState <= nextState;
