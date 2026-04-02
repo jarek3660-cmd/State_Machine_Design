@@ -57,11 +57,11 @@ begin
 Cathode_7SD <= "00000011";
 Anode_7SD <= "1111" & presentState(3 downto 0);
 nextState <= "11110" when presentState <= "00001" else
-"11101" when presentState <= "00010" else
-"11011" when presentState <= "00100" else
-"10111" when presentState <= "01000" else
-"11011" when presentState <= "10010" else
-"11101" when presentState <= "10100" else
+"11101" when presentState = "00010" else
+"11011" when presentState = "00100" else
+"10111" when presentState = "01000" else
+"11011" when presentState = "10010" else
+"11101" when presentState = "10100" else
 "11110";
 
 end Behavioral;
