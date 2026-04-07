@@ -47,7 +47,7 @@ begin
 process (Clk_System_Loc, Reset_Loc)
     begin
         if Reset_Loc = '1' then
-        presentState <= "000000";
+        presentState <= "001111";
         elsif rising_edge(Clk_System_Loc) then
         presentState <= nextState;
         end if;
@@ -55,18 +55,18 @@ process (Clk_System_Loc, Reset_Loc)
     
     Cathode_7SD_Loc <= "11111101";
     Anode_7SD_Loc <= "1111" & presentState(3 downto 0);
-    nextState <= "010000" when presentState = "000000" else
+    nextState <= "011111" when presentState = "001111" else
     
-    "000110" when presentState = "010000" else
-    "010110" when presentState = "000110" else
+    "001001" when presentState = "011111" else
+    "011001" when presentState = "001001" else
     
-    "001111" when presentState = "010110" else
-    "011111" when presentState = "001111" else
-    "101111" when presentState = "011111" else
-    "011111" when presentState = "101111" else
+    "000000" when presentState = "011001" else
+    "010000" when presentState = "000000" else
+    "100000" when presentState = "010000" else
+    "110000" when presentState = "100000" else
     
-    "100110" when presentState = "011111" else
-    "010110" when presentState = "100110" else
-    "000000";
+    "101001" when presentState = "110000" else
+    "111001" when presentState = "101001" else
+    "001111";
     
 end Behavioral;
